@@ -5,7 +5,7 @@ pipeline {
     //     maven 'Maven-3.8'
     // }
     parameters {
-        string(name: 'VERSION_PROD', defaultValue: '', description: 'Version to deploy on prod')
+        string(name: 'VERSION_PROD', defaultValue: '1.0', description: 'Version to deploy on prod')
         choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
