@@ -37,13 +37,16 @@ pipeline {
         // Run logic after all stages executed
         // Condition on Build Status or Build Status Changes
         always {
-            // run always   
+            // run always 
+            echo "This always runs"  
         }
         success {
             // run only on success
+            echo "This runs on success"
         }
         failure {
             // run only on failure
+            echo "This runs on failure"
         }
     }
 }
