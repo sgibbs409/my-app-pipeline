@@ -22,7 +22,7 @@ pipeline {
             // }
             steps {
                 echo "Testing The Application..."
-                echo "Testing with credentials: ${SERVER_CREDENTIALS}"
+                // echo "Testing with credentials: ${SERVER_CREDENTIALS}"
             }
         }
 
