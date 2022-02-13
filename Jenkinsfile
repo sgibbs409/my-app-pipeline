@@ -42,6 +42,7 @@ pipeline {
                         echo USERNAME
                         // or inside double quotes for string interpolation
                         echo "username is $USERNAME"
+                        echo "password is ${PASSWORD}"
                 }
             }
         }
