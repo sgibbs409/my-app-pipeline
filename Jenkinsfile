@@ -1,8 +1,13 @@
 // CODE_CHANGES = getGitChanges()
 pipeline {
     agent any
-    tools {
-        maven 'Maven-3.8'
+    // tools {
+    //     maven 'Maven-3.8'
+    // }
+    parameters {
+        string(name: 'VERSION_PROD', defaultValue: '', description: 'Version to deploy on prod')
+        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
+        booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
     environment {
         NEW_VERSION = '1.3.0'
@@ -23,6 +28,11 @@ pipeline {
             //         BRANCH_NAME == 'dev' && CODE_CHANGES == true
             //     }
             // }
+            when {
+                expression {
+                    params.executeTests == true
+                }
+            }
             steps {
                 echo "Testing The Application..."
                 // echo "Testing with credentials: ${SERVER_CREDENTIALS}"
@@ -33,7 +43,9 @@ pipeline {
 
             steps {
                 echo "Deploying The Application..."
-    
+                echo "Prod version: ${params.VERSION_PROD}"
+                echo "Deploying Version ${params.VERSION}"
+
                 withCredentials([usernamePassword(
                     credentialsId: 'server-user-id',
                     usernameVariable: 'USERNAME',
