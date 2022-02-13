@@ -38,6 +38,16 @@ pipeline {
                 // echo "Testing with credentials: ${SERVER_CREDENTIALS}"
             }
         }
+        stage("post-test"){
+            when {
+                expression {
+                    params.executeTests == false
+                }
+            }
+            steps {
+                echo 'params.executeTests false!'
+            }
+        }
 
         stage("deploy"){
 
