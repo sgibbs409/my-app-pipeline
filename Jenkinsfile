@@ -1,6 +1,9 @@
 // CODE_CHANGES = getGitChanges()
 pipeline {
     agent any
+    tools {
+        maven 'Maven-3.8'
+    }
     environment {
         NEW_VERSION = '1.3.0'
         SERVER_CREDENTIALS = credentials('server-user-id')
